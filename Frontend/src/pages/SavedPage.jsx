@@ -29,7 +29,7 @@ function SavedPage() {
         <div className='grid grid-cols-3 gap-3'>
           {
             !userSavedReels.length ?
-            <p className='text-white'>No Saved Reels</p> :
+            <p className='dark:text-white text-lg'>No Saved Reels</p> :
             userSavedReels.map(reel => (
               <Reel key={reel._id} reel={reel.savedReel} location={location} />
             ))
