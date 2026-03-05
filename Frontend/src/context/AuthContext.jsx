@@ -8,10 +8,11 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  const API = import.meta.env.VITE_BACKEND_API_URL
+
   async function signup(userData) {
     try {
-      const { data: responseData } = await axios.post('http://localhost:3000/api/user/auth/register', userData, { withCredentials: true })
-      // console.log(responseData)
+      const { data: responseData } = await axios.post(`${API}/user/auth/register`, userData, { withCredentials: true })
       setUser(responseData.user)
       return {
         success: responseData.success,
@@ -27,7 +28,7 @@ export function AuthProvider({ children }) {
 
   async function login(userData) {
     try {
-      const { data: responseData } = await axios.post('http://localhost:3000/api/user/auth/login', userData, { withCredentials: true })
+      const { data: responseData } = await axios.post(`${API}/user/auth/login`, userData, { withCredentials: true })
       setUser(responseData.user)
       return {
         success: responseData.success,
@@ -44,7 +45,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     async function getUser() {
       try {
-        const { data: responseData } = await axios.get('http://localhost:3000/api/user/auth', { withCredentials: true })
+        const { data: responseData } = await axios.get(`${API}/user/auth`, { withCredentials: true })
         setUser(responseData.user)
         return {
           success: responseData.success
@@ -65,7 +66,7 @@ export function AuthProvider({ children }) {
 
   async function logout() {
     try {
-      const {data: responseData} = await axios.post('http://localhost:3000/api/user/auth/logout', {}, {withCredentials: true})
+      const {data: responseData} = await axios.post(`${API}/user/auth/logout`, {}, {withCredentials: true})
       setUser(null)
       return {
         success: responseData.success

@@ -17,11 +17,13 @@ export default function ReelProvider({ children }) {
   const [loading, setLoading] = useState(true)
   const [reel, setReel] = useState(null)
 
+  const API = import.meta.env.VITE_BACKEND_API_URL
+
   const { user, loading: authLoading } = useAuth()
 
   async function createReel(fileData) {
     try {
-      const { data: responseData } = await axios.post('http://localhost:3000/api/creator/create', fileData, { withCredentials: true })
+      const { data: responseData } = await axios.post(`${API}/creator/create`, fileData, { withCredentials: true })
       if (!responseData) {
         throw new Error("Failed to create")
       }
@@ -40,7 +42,7 @@ export default function ReelProvider({ children }) {
 
   async function getReels() {
     try {
-      const { data: responseData } = await axios.get('http://localhost:3000/api/reel/reels', { withCredentials: true })
+      const { data: responseData } = await axios.get(`${API}/reel/reels`, { withCredentials: true })
       setVideos(responseData.reels || [])
       return {
         success: responseData?.success,
@@ -59,7 +61,7 @@ export default function ReelProvider({ children }) {
 
   async function likeReel(id) {
     try {
-      const { data: responseData } = await axios.post("http://localhost:3000/api/reel/like", { reelId: id }, { withCredentials: true })
+      const { data: responseData } = await axios.post(`${API}/reel/like`, { reelId: id }, { withCredentials: true })
       // if (responseData?.like) {
       //   setVideos(prev => prev.map(video => video._id === id ? { ...video, likes: video.likes + 1 } : video))
       // } else {
@@ -89,7 +91,7 @@ export default function ReelProvider({ children }) {
   const getReel = useCallback(async function (reelId) {
     try {
       setReel(null)
-      const { data: responseData } = await axios.get(`http://localhost:3000/api/reel/${reelId}`, { withCredentials: true })
+      const { data: responseData } = await axios.get(`${API}/reel/${reelId}`, { withCredentials: true })
       setReel(responseData.reel)
       return {
         success: responseData?.success || true,
@@ -107,7 +109,7 @@ export default function ReelProvider({ children }) {
   const getCreator = useCallback(
     async function (creatorId) {
       try {
-        const { data: responseData } = await axios.get(`http://localhost:3000/api/creator/${creatorId}`, { withCredentials: true })
+        const { data: responseData } = await axios.get(`${API}/creator/${creatorId}`, { withCredentials: true })
         console.log(responseData)
         setCreator(responseData.creatorData)
         return {
@@ -124,7 +126,7 @@ export default function ReelProvider({ children }) {
 
   async function saveReel(reelId) {
     try {
-      const { data: responseData } = await axios.post('http://localhost:3000/api/reel/save', { reelId }, { withCredentials: true })
+      const { data: responseData } = await axios.post(`${API}/reel/save`, { reelId }, { withCredentials: true })
       console.log(responseData)
       setVideos(prev => prev.map(video => (
         video._id === reelId ?
@@ -144,7 +146,7 @@ export default function ReelProvider({ children }) {
 
   async function getUserSavedReels() {
     try {
-      const { data: responseData } = await axios.get('http://localhost:3000/api/user/saved', { withCredentials: true })
+      const { data: responseData } = await axios.get(`${API}/user/saved`, { withCredentials: true })
       setUserSavedReels(responseData.userSavedReels)
     } catch (error) {
       return {
