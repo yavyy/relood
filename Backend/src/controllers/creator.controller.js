@@ -33,7 +33,6 @@ async function createReel(req, res) {
 async function creatorProfile(req, res) {
   try {
     const { creatorId } = req.params
-    console.log(creatorId)
     const creator = await User.findById(creatorId).select("-password -role")
     if (!creator) {
       return res.status(404).json({ success: false, message: "Creator not found" })

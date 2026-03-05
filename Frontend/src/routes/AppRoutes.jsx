@@ -47,6 +47,7 @@ function AppRoutes() {
           </ProtectedRoutes>
         } />
       </Routes>
+      
       {backgroundLocation && (
         <Routes>
           <Route

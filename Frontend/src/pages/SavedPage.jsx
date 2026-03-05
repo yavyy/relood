@@ -19,7 +19,7 @@ function SavedPage() {
   }, [])
 
   return (
-    <div className='min-h-screen w-full relative'>
+    <div className='min-h-screen max-w-md mx-auto bg-black/90 relative'>
       {
         !userSavedReels.length ?
           <Loader /> :

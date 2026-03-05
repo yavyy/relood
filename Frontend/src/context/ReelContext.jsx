@@ -110,7 +110,6 @@ export default function ReelProvider({ children }) {
     async function (creatorId) {
       try {
         const { data: responseData } = await axios.get(`${API}/creator/${creatorId}`, { withCredentials: true })
-        console.log(responseData)
         setCreator(responseData.creatorData)
         return {
           success: responseData.success || true,
@@ -127,7 +126,6 @@ export default function ReelProvider({ children }) {
   async function saveReel(reelId) {
     try {
       const { data: responseData } = await axios.post(`${API}/reel/save`, { reelId }, { withCredentials: true })
-      console.log(responseData)
       setVideos(prev => prev.map(video => (
         video._id === reelId ?
           {

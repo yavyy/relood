@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import reelRoutes from './routes/reel.routes.js'
 import userRoutes from './routes/user.routes.js'
 import cors from 'cors'
-import creatorRoutes from './routes/reel.routes.js'
+import creatorRoutes from './routes/creator.routes.js'
 
 const app = express();
 
@@ -22,11 +22,11 @@ connectToDB()
 // auth routes for user and foodPartner
 app.use('/api/user/auth', authRoutes)
 
-//reel routes
-app.use('/api/reel', reelRoutes)
-
 //creator routes
 app.use('/api/creator', creatorRoutes)
+
+//reel routes
+app.use('/api/reel', reelRoutes)
 
 //user routes
 app.use('/api/user', userRoutes)

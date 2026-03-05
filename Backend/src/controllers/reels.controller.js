@@ -78,13 +78,11 @@ async function likeReel(req, res) {
 async function getReel(req, res) {
   try {
     const { reelId } = req.params;
-    console.log(reelId)
     if (!reelId) {
       return res.status(400).json({ success: false, message: "Invalid ID" })
     }
 
     const reel = await Reel.findById(reelId).select("video -_id")
-    console.log(reel)
     if (!reel) {
       return res.status(400).json({ success: false, message: "No reel found" })
     }
