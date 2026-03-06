@@ -96,7 +96,7 @@ export default function Explore() {
 
       {
         loading || videos.length < 0 ?
-          (<div className="min-h-screen flex items-center w-full bg-black justify-center">
+          (<div className="relative min-h-screen flex items-center w-full bg-black justify-center">
             <Loader size={100} />
           </div>) :
           videos.map((video, index) => {
@@ -108,7 +108,7 @@ export default function Explore() {
               <video
                 ref={(el) => (videoRefs.current[index] = el)}
                 src={video.video}
-                className="w-full object-cover"
+                className="h-full w-full object-cover"
                 loop
                 muted={mute}
                 onClick={() => setMute(!mute)}
