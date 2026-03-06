@@ -10,6 +10,8 @@ import creatorRoutes from './routes/creator.routes.js'
 
 const app = express();
 
+app.set("trust proxy", 1)
+
 app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true

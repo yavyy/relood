@@ -27,7 +27,8 @@ async function registerUser(req, res) {
     const options = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax'
+      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
+      path:'/'
     }
 
     res.cookie('token', token, options)
