@@ -108,7 +108,7 @@ export default function Explore() {
               <video
                 ref={(el) => (videoRefs.current[index] = el)}
                 src={video.video}
-                className="h-full w-full object-cover"
+                className="h-screen w-full object-cover"
                 loop
                 muted={mute}
                 onClick={() => setMute(!mute)}
@@ -151,7 +151,7 @@ export default function Explore() {
 
           })
       }
-      <div div className="sticky bottom-0 right-0 w-full z-50 md:right-1/2 md:translate-x-1/2 px-4 py-2 flex justify-between items-center bg-transparent backdrop-blur-xs">
+      <div div className="sticky bottom-0 right-0 w-full z-50 px-4 py-2 flex justify-between items-center bg-transparent backdrop-blur-xs">
         <button onClick={() => navigate('/')} className="text-white">
           <GoHome size={24} />
         </button>
