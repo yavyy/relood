@@ -126,14 +126,7 @@ export default function Explore() {
                     {video.caption ? video.caption : ""}
                   </p>
                 </div>
-              </div>
-              <div className="fixed bottom-0 right-0 w-full z-50 md:right-1/2 md:translate-x-1/2 px-4 py-2 flex justify-between items-center bg-transparent backdrop-blur-xs">
-                <button onClick={() => navigate('/')} className="text-white">
-                  <GoHome size={24} />
-                </button>
-                <button onClick={() => navigate('/saved')} className="text-white">
-                  <IoBookmarkOutline size={24} />
-                </button>
+
               </div>
 
               {/* Right Actions */}
@@ -155,8 +148,17 @@ export default function Explore() {
                 </button>
               </div>
             </div>
+
           })
       }
-    </div>
+      <div div className="sticky bottom-0 right-0 w-full z-50 md:right-1/2 md:translate-x-1/2 px-4 py-2 flex justify-between items-center bg-transparent backdrop-blur-xs">
+        <button onClick={() => navigate('/')} className="text-white">
+          <GoHome size={24} />
+        </button>
+        <button onClick={() => navigate('/saved')} className="text-white">
+          <IoBookmarkOutline size={24} />
+        </button>
+      </div>
+    </div >
   );
 }
