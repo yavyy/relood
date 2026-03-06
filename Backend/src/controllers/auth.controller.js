@@ -64,7 +64,13 @@ async function loginUser(req, res) {
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '3d' })
 
-    res.cookie('token', token)
+    const options = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax'
+    }
+
+    res.cookie('token', token, options)
 
     res.status(200).json({
       success: true, message: "User logged in successfully", user: {
