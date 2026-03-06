@@ -26,15 +26,17 @@ function SavedPage() {
         </button>
         <h2 className='dark:text-white text-2xl font-semibold'>Your Saved Reels</h2>
         <div className='h-px bg-gray-200 dark:bg-neutral-800 my-2' />
-        <div className='grid grid-cols-3 gap-3'>
-          {
-            !userSavedReels.length ?
-            <p className='dark:text-white text-lg'>No Saved Reels</p> :
-            userSavedReels.map(reel => (
-              <Reel key={reel._id} reel={reel.savedReel} location={location} />
-            ))
-          }
-        </div>
+        {
+          !userSavedReels.length ?
+            <p className='dark:text-white text-lg text-nowrap'>No Saved Reels</p> :
+            <div className='grid grid-cols-3 gap-3'>
+              {
+                userSavedReels.map(reel => (
+                  <Reel key={reel._id} reel={reel.savedReel} location={location} />
+                ))
+              }
+            </div>
+        }
       </div>
     </div>
   )
