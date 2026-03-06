@@ -87,8 +87,18 @@ async function loginUser(req, res) {
 }
 
 async function logoutUser(_, res) {
-  res.clearCookie("token")
-  res.status(200).json({ success: true, message: "User logged out succesfully" })
+  try {
+    const options = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
+      path: '/'
+    }
+    res.clearCookie("token", options)
+    res.status(200).json({ success: true, message: "User logged out successfully" })
+  } catch (error) {
+    res.status(500).json({success: false, message: "Failed to logout", error: error.message})
+  }
 }
 
 async function getUser(req, res) {
