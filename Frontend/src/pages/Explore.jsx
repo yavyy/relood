@@ -116,14 +116,14 @@ export default function Explore() {
               />
 
               {/* Overlay */}
-              <div className="absolute bottom-10 left-0 right-0 p-4 ">
+              <div className="absolute bottom-20 left-0 right-0 p-4 ">
                 <div className="text-white">
                   <Link to={`/creator/${video.uploadedBy?._id}`}>
                     <h2 className="text-sm sm:text-base font-semibold text-wrap">
                       @creator_{video.uploadedBy?.fullName}
                     </h2></Link>
                   <p className="text-xs sm:text-sm opacity-90 mt-1">
-                    {video.caption ? video.caption : ""}
+                    {video.caption ? video.caption : "No caption"}
                   </p>
                 </div>
 
