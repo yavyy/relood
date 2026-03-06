@@ -2,10 +2,8 @@ import jwt from 'jsonwebtoken'
 import { User } from '../models/users.model.js';
 
 export async function checkAuthMiddleware(req, res, next) {
-  console.log("Cookies",req.cookies)
-  console.log("header cookie",req.headers.cookie)
   try {
-    const token = req.cookies.token || req.headers.cookie;
+    const token = req.cookies.token
     if (!token) {
       return res.status(400).json({ success: false, message: "Please login" })
     }
