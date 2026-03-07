@@ -24,6 +24,7 @@ export default function ReelProvider({ children }) {
   async function createReel(fileData) {
     try {
       const { data: responseData } = await axios.post(`${API}/creator/create`, fileData, { withCredentials: true })
+      console.log("createReel",responseData)
       if (!responseData) {
         throw new Error("Failed to create")
       }

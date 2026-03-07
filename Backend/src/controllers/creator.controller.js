@@ -23,10 +23,12 @@ async function createReel(req, res) {
       uploadedBy: req.user._id
     })
 
-    res.status(201).json({ success: true, message: 'Video uploaded successfully', reel })
+    const populatedReel = await reel.populate("uploadedBy", "fullName")
+
+    res.status(201).json({ success: true, message: 'Video uploaded successfully', reel: populatedReel })
 
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to upload reel", error: error })
+    res.status(500).json({ success: false, message: "Failed to upload reel", error: error.message })
   }
 }
 

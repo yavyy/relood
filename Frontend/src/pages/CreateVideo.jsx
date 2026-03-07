@@ -33,6 +33,7 @@ export default function CreateReel() {
       navigate('/')
     } else {
       setError(result.message)
+      setLoading(false)
     }
   }
 
