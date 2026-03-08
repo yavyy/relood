@@ -9,6 +9,7 @@ import { GoHeartFill, GoHome } from "react-icons/go";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { GoHeart } from "react-icons/go";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { BiComment } from "react-icons/bi";
 
 
 export default function Explore() {
@@ -138,7 +139,9 @@ export default function Explore() {
                   {video.likes}
                 </button>
                 <button className="flex flex-col items-center text-xs">
-                  <span className="text-lg">💬</span>
+                  <span className="border border-gray-100/10 text-center p-1.5 bg-transparent backdrop-blur-sm shadow rounded-full">
+                    <BiComment size={16} />
+                  </span>
                   1.2K
                 </button>
                 <button onClick={() => handleReelSave(video)} className="flex flex-col items-center text-xs">
